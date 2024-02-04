@@ -1,0 +1,22 @@
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+
+xval1 = []
+yval1 = []
+for i in range(2,11):
+    xval1 += [i]
+    yval1 += [prob1(i)]
+plt.scatter(xval1, yval1, label = "Your friend starts - starting with 1", color = 'blue', marker = '.', linestyle = '--')
+xval2 = []
+yval2 = []
+for i in range(2,11):
+    xval2 += [i]
+    yval2 += [prob0(i)]
+plt.scatter(xval2, yval2, label = "You start - starting with 0", color = 'red', marker = '.', linestyle = '--')
+plt.xlabel('n value')
+plt.ylabel('probability of a win (0 determinant matrix)')
+plt.legend()
+plt.grid(alpha = 0.5, ls = '--')
+plt.savefig('Scatter_n=2-10_s=0-1.png')
+plt.show()
