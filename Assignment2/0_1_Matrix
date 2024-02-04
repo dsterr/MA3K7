@@ -1,0 +1,12 @@
+import numpy as np
+import random
+
+n = 3 #setting the dimension - 2 or higher
+matrix = [] #list setup for the digits of the matrix
+for i in range (0, n*n): #n^2 iterations of the loop
+    matrix += [random.choice([0,1])] #making a random choice between 0 and 1 for the digit i in the list
+    k = matrix.count(1) #counting the 1's to check matrix comes from the game
+matrix = np.array(matrix) #turning the list into an array
+matrix = matrix.reshape(n,n) #turning the array into the correct shape matrix
+print(k)
+print(matrix) #printing the matrix to check
