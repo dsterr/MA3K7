@@ -1,0 +1,22 @@
+import numpy as np
+import random
+
+n = 3 #setting the dimension, never be 1.
+Who_goes_first = 0
+matrix = []
+k = 0
+if Who_goes_first == 0:
+    f = int(np.floor((n*n)/2))
+if Who_goes_first == 1:
+    f = int(np.ceil((n*n)/2))
+
+while k != f:
+    for i in range (0, n*n):
+        matrix += [random.choice([0,1])]
+        k = matrix.count(1)
+    if k != f:
+        matrix = []
+matrix = np.array(matrix)
+matrix = matrix.reshape(n,n)
+print(matrix)
+print("The determinant of the final matrix is:", int(np.linalg.det(matrix)))
