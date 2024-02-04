@@ -1,0 +1,45 @@
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+
+iterations = int(1e5)
+    
+def prob0(n):
+    matrix = []
+    k = 0
+    f = int(np.floor((n*n)/2))
+    dets = []
+    for j in range(0, iterations):
+        while k != f:
+            for i in range (0, n*n):
+                matrix += [random.choice([0,1])]
+                k = matrix.count(1)
+            if k != f:
+                matrix = []
+        matrix = np.array(matrix)
+        matrix = matrix.reshape(n,n)
+        dets += [(int(np.linalg.det(matrix)))]
+        k = 0
+        matrix = []
+    p_win = dets.count(0)/len(dets)
+    return p_win
+
+def prob1(n):
+    matrix = []
+    k = 0
+    f = int(np.ceil((n*n)/2))
+    dets = []
+    for j in range(0, iterations):
+        while k != f:
+            for i in range (0, n*n):
+                matrix += [random.choice([0,1])]
+                k = matrix.count(1)
+            if k != f:
+                matrix = []
+        matrix = np.array(matrix)
+        matrix = matrix.reshape(n,n)
+        dets += [(int(np.linalg.det(matrix)))]
+        k = 0
+        matrix = []
+    p_win = dets.count(0)/len(dets)
+    return p_win
