@@ -1,0 +1,43 @@
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+
+n = 3 #setting the dimension, never be 1.
+Who_goes_first = 1
+matrix = []
+k = 0
+if Who_goes_first == 0:
+    f = int(np.floor((n*n)/2))
+if Who_goes_first == 1:
+    f = int(np.ceil((n*n)/2))
+dets = []
+iterations = int(1e5)
+for j in range(0, iterations):
+    while k != f:
+        for i in range (0, n*n):
+            matrix += [random.choice([0,1])]
+            k = matrix.count(1)
+        if k != f:
+            matrix = []
+    matrix = np.array(matrix)
+    matrix = matrix.reshape(n,n)
+    dets += [(int(np.linalg.det(matrix)))]
+    k = 0
+    matrix = []
+p_win = dets.count(0)/len(dets)
+
+Max = max(dets)
+Min = min(dets)
+bins = np.arange (Min, Max+2)-0.5
+
+fig, ax = plt.subplots (1,1)
+
+ax.hist(dets, bins, density = True, rwidth =0.9)
+ax.set_xlim (Min-1,Max+1)
+ax.set_xticks(np.arange(Min, Max+1))
+plt.grid('on')
+plt.xlabel('Determinant of the final matrix')
+plt.ylabel('Probability density')
+plt.savefig('Histogram_n=3_s=1.png')
+plt.show()
+print("The probability of a win with", Who_goes_first, "starting is", p_win)
