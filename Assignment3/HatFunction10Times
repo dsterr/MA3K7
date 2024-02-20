@@ -1,0 +1,9 @@
+import random
+import numpy as np
+finalvalues = []
+for i in range (10):
+    HN = []
+    for i in range(1,10):
+        HN += [i]
+    finalvalues += [hat(HN)]
+print(sorted(finalvalues))
