@@ -1,0 +1,9 @@
+import random
+def hat(HN):
+    while len(HN) > 1:
+        p1 = random.choice(HN)
+        HN.remove(p1)
+        p2 = random.choice(HN)
+        HN.remove(p2)
+        HN += [abs(p1-p2)]
+    return HN[0]
