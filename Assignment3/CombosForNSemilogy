@@ -1,0 +1,22 @@
+import numpy as np
+import math
+import matplotlib
+import matplotlib.pyplot as plt
+
+k = 1
+combinationposs = []
+paperp = []
+n = 76
+for i in range(3,n+1):
+    paperp += [i]
+    k = (k*math.factorial(i))/(2*math.factorial(i-2))
+    combinationposs += [k]
+print(k)
+print(paperp)
+print(combinationposs)
+plt.semilogy(paperp, combinationposs)
+plt.xlabel('Number of pieces of paper in the hat')
+plt.ylabel('Number of different combinations')
+plt.grid(alpha = 0.5, ls = '--')
+#plt.savefig('NumberOfDifferentCombosHat.png')
+plt.show()
