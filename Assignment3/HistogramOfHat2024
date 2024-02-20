@@ -1,0 +1,35 @@
+import random
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.rcParams["figure.figsize"] = (20, 10)
+
+HN = []
+finalvalues = []
+for i in range (100000):
+    HN = []
+    for i in range(1,2025):
+        HN += [i]
+    finalvalues += [hat(HN)]
+print(sorted(finalvalues))
+
+bins = np.arange (0, 2026)-0.5
+fig, ax = plt.subplots (1,1)
+ax.hist(finalvalues, bins, rwidth =1)
+ax.set_xlim(-1,100)
+ax.set_xticks(50*np.arange(0, 42))
+plt.xlabel('Final Value in the Hat')
+plt.ylabel('Frequency')
+plt.savefig('FrequencyOfFinalValues100000.png')
+plt.show()
+
+a = np.array([finalvalues])
+a = a%2
+a = a.tolist()
+print(a)
+
+b = np.array([finalvalues])
+b = b%4
+b = b.tolist()
+print(b)
