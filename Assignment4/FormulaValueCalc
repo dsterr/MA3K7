@@ -1,0 +1,13 @@
+Prob = [1, 0.5]
+Integer = [1, 2]
+for i in range (23):
+    Prob += [((Prob[i])+(Prob[i+1]))/2]
+    Integer += [i+3]
+print(Prob)
+print(Integer)
+plt.scatter(Integer, Prob)
+plt.xlabel('Integer in sequence')
+plt.ylabel('Probability of landing on an integer')
+plt.grid(alpha = 0.5, ls = '--')
+plt.savefig('ProbOfLandingOnN.png')
+plt.show()
