@@ -1,0 +1,44 @@
+import random
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+Count2 = 0
+Count3 = 0
+Count4 = 0
+Count5 = 0
+Count6 = 0
+Count7 = 0
+Count8 = 0
+Count9 = 0
+Count10 = 0
+CountT = 0
+Coin = [1,2] #Set Coin/Die as required
+n = 11 #Set queried n value
+for j in range(1000000):
+    Steps = [1]
+    for i in range(100000):
+        m = random.choice(Coin)
+        Steps += [m + Steps[i]]
+        if Steps[i+1] == 2:
+            Count2 += 1
+        if Steps[i+1] == 3:
+            Count3 += 1
+        if Steps[i+1] == 4:
+            Count4 += 1
+        if Steps[i+1] == 5:
+            Count5 += 1
+        if Steps[i+1] == 6:
+            Count6 += 1
+        if Steps[i+1] == 7:
+            Count7 += 1
+        if Steps[i+1] == 8:
+            Count8 += 1
+        if Steps[i+1] == 9:
+            Count9 += 1
+        if Steps[i+1] == 10:
+            Count10 += 1
+        if Steps[i+1] > n+1:
+            CountT += 1
+            break
+print("The suggested probability of landing on each of the following squares is as follows: 2 is", Count2/CountT, "3 is", Count3/CountT, "4 is", Count4/CountT, "5 is", Count5/CountT, "6 is", Count6/CountT, "7 is", Count7/CountT, "8 is", Count8/CountT, "9 is", Count9/CountT, "10 is", Count10/CountT)
