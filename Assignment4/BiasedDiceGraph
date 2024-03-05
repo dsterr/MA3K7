@@ -1,0 +1,27 @@
+#Biased Dice
+import random
+import matplotlib
+import numpy as np
+
+Count1 = 0
+Count2 = 0
+def Coin():
+    k = random.choices((1,-1), weights=(0.5,0.5))#Set Coin/Die as required as random.choices((k), weights=(l)) 
+        #with k as the list of choices, and l as the probabilities of these choices in the respective position.
+    return(k[0])
+n = 25 #Set queried n value
+s = 10000 #number of steps to take
+number = [0]
+for i in range(s):
+    number += [i]
+l = 100
+for j in range(l):
+    Steps = [0]
+    for i in range(s):
+        m = Coin()
+        Steps += [m + Steps[i]]
+    plt.plot(number, Steps)
+plt.xlabel('Number of coin flips')
+plt.ylabel('Value of function')
+#plt.savefig('RandomWalk.png')
+plt.show()
