@@ -1,0 +1,11 @@
+import random
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+Coin = [1,2]
+Steps = [1]
+for i in range(24):
+    m = random.choice(Coin)
+    Steps += [m + Steps[i]]
+print(Steps)
