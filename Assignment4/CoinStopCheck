@@ -1,0 +1,11 @@
+for j in range (10):
+    Coin = [1,2]
+    Steps = [1]
+    for i in range(24):
+        m = random.choice(Coin)
+        Steps += [m + Steps[i]]
+        if Steps[i+1] == 25:
+            break
+        if Steps[i+1] == 26:
+            break
+    print(Steps)
