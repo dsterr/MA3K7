@@ -1,0 +1,13 @@
+def prime(u):
+    check = True 
+    if u == 1:
+        check = False
+    if u > 1:
+        for i in range(2,u):
+            if u % i == 0:
+                check = False
+                break
+    if check == True:
+        print(u, "is prime")
+    if check == False:
+        print(u, "is not prime")
