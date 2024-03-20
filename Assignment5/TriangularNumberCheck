@@ -1,0 +1,10 @@
+def triangular(u):
+    if (u < 0):
+        return u"\u25A1"
+    sum, n = 0, 1
+    while(sum <= u): 
+        sum = sum + n
+        if (sum == u):
+            return u"\u25A0"
+        n += 1
+    return u"\u25A1"
