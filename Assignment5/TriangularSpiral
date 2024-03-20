@@ -1,0 +1,31 @@
+def print_spiral_grid(n):
+    grid = [[0] * n for _ in range(n)]
+    num = n * n
+    coords = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    direction_index = 0
+    row, col = 0, 0
+    for _ in range(n * n):
+        grid[row][col] = num
+        num -= 1
+        next_row = row + coords[direction_index][0]
+        next_col = col + coords[direction_index][1]
+        if 0 <= next_row < n and 0 <= next_col < n and grid[next_row][next_col] == 0:
+            row, col = next_row, next_col
+        else:
+            direction_index = (direction_index + 1) % 4
+            row += coords[direction_index][0]
+            col += coords[direction_index][1]
+        def triangular(u):
+            if (u < 0):
+                return u"\u25A1"
+            sum, n = 0, 1
+            while(sum <= u): 
+                sum = sum + n
+                if (sum == u):
+                    return u"\u25A0"
+                n += 1
+            return u"\u25A1"
+    for row in grid:
+        print(" ".join(triangular(num) for num in row))
+n = int(input("Value of n: "))
+print_spiral_grid(n)
