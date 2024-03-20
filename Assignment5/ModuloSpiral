@@ -1,0 +1,30 @@
+def print_spiral_grid(n):
+    grid = [[0] * n for _ in range(n)]
+    num = n * n
+    coords = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    direction_index = 0
+    row, col = 0, 0
+    for _ in range(n * n):
+        grid[row][col] = num
+        num -= 1
+        next_row = row + coords[direction_index][0]
+        next_col = col + coords[direction_index][1]
+        if 0 <= next_row < n and 0 <= next_col < n and grid[next_row][next_col] == 0:
+            row, col = next_row, next_col
+        else:
+            direction_index = (direction_index + 1) % 4
+            row += coords[direction_index][0]
+            col += coords[direction_index][1]
+        def symb(u):
+            if u % 4 == 0:
+                return "\u001b[30m0"
+            if u % 4 == 1:
+                return "\u001b[31m1"
+            if u % 4 == 2:
+                return "\u001b[32m2"
+            else: 
+                return "\u001b[34m3"
+    for row in grid:
+        print(" ".join(symb(num) for num in row))
+n = int(input("Value of n: "))
+print_spiral_grid(n)
