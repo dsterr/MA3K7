@@ -1,0 +1,41 @@
+#import packages as required
+import random
+
+#initialise a number of strings
+n = 10
+loop_count = 0
+
+#initialise the ends of the strings into a list
+ends = []
+for i in range(0,n):
+    ends += [i+1, i+1]
+print(ends)
+
+#define a function to randomly select each end from the array and put them into a new list
+#or randomise the list order
+random.shuffle(ends)
+print(ends)
+
+#set up tied ends
+loop = []
+for i in range(n):
+    tie = []
+    tie += [ends[0], ends[1]]
+    ends.pop(0)
+    ends.pop(0)
+    loop += [tie]
+print(loop)
+
+#put first value into a loop to check against
+all_loops = []
+all_loops += [loop[0]]
+loop.pop(0)
+
+for j in range(len(pairs)):
+    for k in range(len(all_loops[0])):
+        if loop[j][0] == all_loops[0][k]:
+            all_loops[0] += loop[j]
+        elif loop[j][1] == all_loops[0][k]:
+            all_loops[0] += loop[j]
+    
+print(all_loops)
